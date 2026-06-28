@@ -9,8 +9,8 @@ export type Tab = { id: string; label: string };
 type TabsProps = {
   tabs: Tab[];
   defaultValue: string;
-  /** Render-prop: receives the active tab id. */
-  children: (activeId: string) => React.ReactNode;
+  /** Simple content shown for any active tab. */
+  children?: React.ReactNode;
   className?: string;
 };
 
@@ -50,7 +50,13 @@ export function Tabs({ tabs, defaultValue, children, className }: TabsProps) {
           );
         })}
       </div>
-      <div role="tabpanel">{children(active)}</div>
+      <div role="tabpanel" data-active={active} className="text-sm text-bx-text-muted">
+        {children ?? (
+          <p>
+            Onglet actif : <span className="font-mono text-bx-blue">{active}</span>
+          </p>
+        )}
+      </div>
     </div>
   );
 }

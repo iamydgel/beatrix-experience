@@ -1,4 +1,3 @@
-import { ArrowRight, Sparkles, Target, Trophy } from "lucide-react";
 import {
   Badge,
   Button,
@@ -7,6 +6,7 @@ import {
   Reveal,
   Tabs,
 } from "@/components/ui";
+import { ArrowRight, Sparkles, Target, Trophy } from "./_components/icons";
 import { LiveTickDemo } from "./_components/LiveTickDemo";
 
 export const metadata = {
@@ -108,13 +108,7 @@ export default function DesignSystemPage() {
               { id: "analysis", label: "Analyse" },
             ]}
             defaultValue="summary"
-          >
-            {(active) => (
-              <p className="text-sm text-bx-text-muted">
-                Onglet actif : <span className="font-mono text-bx-blue">{active}</span> — le contenu change ici.
-              </p>
-            )}
-          </Tabs>
+          />
         </Reveal>
       </section>
 

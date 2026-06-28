@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -21,7 +21,13 @@ const sizeStyles: Record<ButtonSize, string> = {
   lg: "h-14 px-7 text-lg rounded-2xl",
 };
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+type MotionButtonProps = ComponentProps<typeof motion.button>;
+
+type ButtonProps = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  // Handlers overridden by motion — see HTMLMotionProps conflict
+  "onDrag" | "onDragStart" | "onDragEnd" | "onAnimationStart" | "onAnimationEnd" | "onAnimationIteration"
+> & {
   variant?: ButtonVariant;
   size?: ButtonSize;
 };
@@ -29,6 +35,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
     const reduce = useReducedMotion();
+    const motionProps = props as unknown as MotionButtonProps;
     return (
       <motion.button
         ref={ref}
@@ -44,7 +51,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           sizeStyles[size],
           className
         )}
-        {...props}
+        {...motionProps}
       >
         {variant === "primary" && (
           <span
