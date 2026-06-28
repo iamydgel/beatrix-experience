@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   Beatrix Design System — tokens source unique
+   Référence : spec §3, §16 + DESIGN.md §A1
+   ───────────────────────────────────────────────────────────── */
+
+@theme {
+  /* ─── Polices (liées aux variables next/font) ─── */
+  --font-display: var(--font-display), "Space Grotesk", sans-serif;
+  --font-sans: var(--font-sans), "Inter", sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
+
+  /* ─── Couleurs primaires (logo) ─── */
+  --color-bx-green: #00E676;
+  --color-bx-blue: #00B0FF;
+  --color-bx-green-deep: #00B85A; /* ajout A1 : pour dégradé vertical du logo */
+
+  /* ─── Surfaces nocturnes ─── */
+  --color-bx-bg: #06080D;
+  --color-bx-bg-elevated: #0C111B;
+  --color-bx-surface: #111827;
+  --color-bx-surface-glass: rgba(255, 255, 255, 0.04);
+  --color-bx-border: rgba(255, 255, 255, 0.08);
+  --color-bx-border-strong: rgba(0, 176, 255, 0.30);
+
+  /* ─── Texte ─── */
+  --color-bx-text: #F1F5F9;
+  --color-bx-text-muted: #94A3B8;
+  --color-bx-text-subtle: #64748B;
+
+  /* ─── Sémantiques ─── */
+  --color-bx-positive: #00E676;
+  --color-bx-negative: #FF4D6D;
+  --color-bx-warning: #FFB020;
+  --color-bx-live: #FF3B5C;
+
+  /* ─── Easings (spec §6) ─── */
+  --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ─── Base reset ─── */
+html,
+body {
+  background-color: var(--color-bx-bg);
+  color: var(--color-bx-text);
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
